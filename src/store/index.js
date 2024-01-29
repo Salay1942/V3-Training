@@ -4,7 +4,6 @@ import { BASE_API_URL } from "@/constants";
 
 export default createStore({
   state: {
-    //profile: { id: 1, name: "John Doe", email: "john@gmail.com" },
     profile: null,
   },
   getters: {},

@@ -5,6 +5,15 @@
     <a :href="googleUrl"></a>
     <img :src="imgUrl.url" :alt="imgUrl.url" v-if="isShow" />
     <button class="btn btn-info" @click="greet">Click Me !</button>
+    <br />
+
+    <div>
+      <h1>Upload File</h1>
+      <form @submit.prevent="onSubmit" enctype="multipart/form-data">
+        <input type="file" name="picture" ref="file" />
+        <button type="submit">Upload</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -21,6 +30,21 @@ export default {
     });
     const isShow = ref(false);
 
+    const file = ref(null);
+
+    const onSubmit = () => {
+      console.log(file.value.files[0]);
+      const fileUpload = file.value.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(fileUpload);
+      reader.onload = (e) => {
+        const base64Image = e.target.result;
+        console.log(base64Image);
+        alert(base64Image);
+        //ให้ส่ง base64Image ไปอัปโหลดที่ server โดยใช้ axios
+      };
+    };
+
     onMounted(() => {
       alert("Hello About Page");
     });
@@ -35,7 +59,7 @@ export default {
       isShow.value = !isShow.value;
     };
 
-    return { email, googleUrl, imgUrl, isShow, greet };
+    return { email, googleUrl, imgUrl, isShow, greet, onSubmit, file };
   },
 };
 </script>
