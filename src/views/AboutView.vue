@@ -41,7 +41,6 @@ export default {
         const base64Image = e.target.result;
         console.log(base64Image);
         alert(base64Image);
-        //ให้ส่ง base64Image ไปอัปโหลดที่ server โดยใช้ axios
       };
     };
 

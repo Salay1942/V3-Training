@@ -4,6 +4,7 @@ import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
 import ProductView from "../views/ProductView.vue";
 import categoryRoutes from "../views/category/category-route";
+import PersonView from "../views/PersonView.vue";
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
         path: "/product",
         name: "product",
         component: ProductView,
+      },
+      {
+        path: "/person",
+        name: "person",
+        component: PersonView,
       },
       ...categoryRoutes,
     ],
